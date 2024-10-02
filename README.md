@@ -14,6 +14,6 @@ A title must be supplied to add the task - a validation error will be displayed 
 
 ## Installation Instructions
 1. Download or clone this repo.
-2. Run `npm install` to install the necessary packages for running the app.
+2. Run `npm install` to install the necessary packages for running the app. This will throw some warnings due to the version of Expo being used, as it apparently makes use of some deprecated packages. In addition, some of Expo's current dependencies have moderate security vulnerabilities. For a real app, this should be investigated, but for the purposes of this assignment, it doesn't affect the app's operation and there's not really anything I can do about it.
 3. Start Expo with `npm start`.
 4. Press `i` to open an iPhone simulator or `a` to open an Android simulator.
