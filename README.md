@@ -11,3 +11,9 @@ I opted to just use prop drilling here for passing state and management function
 I also opted to implement the Add Task form using a `Modal` component instead of adding React Navigation to the project and using separate screens. This was to save time on implementation, since navigation is a bit overkill for just 2 screens.
 
 A title must be supplied to add the task - a validation error will be displayed to indicate to the user that title is required if they attempt to add a task without a title.
+
+## Installation Instructions
+1. Download or clone this repo.
+2. Run `npm install` to install the necessary packages for running the app.
+3. Start Expo with `npm start`.
+4. Press `i` to open an iPhone simulator or `a` to open an Android simulator.
