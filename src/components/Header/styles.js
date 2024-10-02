@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 2 Oct 2024, 12:18:16 PM
- *  Last update: 2 Oct 2024, 12:36:23 PM
+ *  Last update: 2 Oct 2024, 12:36:43 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { StyleSheet } from "react-native";
@@ -23,7 +23,7 @@ export default StyleSheet.create({
     },
 
     title: {
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: "700",
         color: "#FFF",
     },
