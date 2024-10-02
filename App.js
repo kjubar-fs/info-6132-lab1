@@ -1,11 +1,11 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 26 Oct 1985, 4:15:00 AM
- *  Last update: 2 Oct 2024, 2:15:10 PM
+ *  Last update: 2 Oct 2024, 2:51:10 PM
  *  Copyright (c) 1985 - 2024 Kaleb Jubar
  */
 // native/Expo components
-import { Alert, StyleSheet, View } from "react-native";
+import { Alert, Pressable, StyleSheet, View, Text, Platform } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
 // React hooks
@@ -18,6 +18,8 @@ import { v4 as uuidv4 } from "uuid";
 // custom components
 import Header from "./src/components/Header";
 import TaskList from "./src/components/TaskList";
+
+import { positiveColor } from "./src/includes/globalStyles";
 
 export default function App() {
     const [tasks, setTasks] = useState([
@@ -101,14 +103,63 @@ export default function App() {
                 toggleTask={toggleTaskStatus}
                 deleteTask={deleteTask}
             />
+
+            <Pressable
+                // by using a function, we can apply styles depending on pressed state
+                style={({ pressed }) => (
+                    [
+                        styles.addBtn,
+                        pressed ? styles.addBtn.withoutShadow : styles.addBtn.withShadow,
+                    ]
+                )}
+            >
+                <Text style={styles.addBtn.caption}>+</Text>
+            </Pressable>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
+        position: "relative",
         flex: 1,
 
         backgroundColor: "#fff",
+    },
+
+    addBtn: {
+        position: "absolute",
+        bottom: Platform.OS === "ios" ? 30 : 15,
+        right: 15,
+        width: 50,
+        height: 50,
+        justifyContent: "center",
+        alignItems: "center",
+
+        backgroundColor: positiveColor,
+        borderRadius: 360,
+
+        withShadow: {
+            shadowColor: Platform.OS === "ios" ? "#666" : undefined,
+            shadowOffset: {
+                width: 0,
+                height: 3,
+            },
+            shadowOpacity: 0.5,
+            shadowRadius: 2,
+            elevation: 3,
+        },
+
+        withoutShadow: {
+            transform: [
+                { translateY: 3, }
+            ],
+        },
+
+        caption: {
+            fontSize: 30,
+            fontWeight: "700",
+            color: "#FFF",
+        },
     },
 });
