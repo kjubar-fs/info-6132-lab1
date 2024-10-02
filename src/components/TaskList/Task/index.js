@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 2 Oct 2024, 12:01:42 PM
- *  Last update: 2 Oct 2024, 1:48:48 PM
+ *  Last update: 2 Oct 2024, 1:58:02 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { View, Text, Switch } from "react-native";
@@ -11,7 +11,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { accentColor, negativeColor } from "../../../includes/globalStyles";
 import styles from "./styles";
 
-export default function Task({ task }) {
+export default function Task({ task, onToggleTaskStatus, onDeleteTask }) {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>{task.title}</Text>
@@ -24,6 +24,7 @@ export default function Task({ task }) {
                         trackColor={{ false: "#DDD", true: accentColor }}
                         ios_backgroundColor="#DDD"
                         thumbColor="#FFF"
+                        onChange={onToggleTaskStatus}
                     />
                 </View>
 
@@ -35,7 +36,7 @@ export default function Task({ task }) {
                     style={styles.delete.button}
                     activeOpacity={0.5}
                     underlayColor="#EFEFEF"
-                    onPress={() => {}}
+                    onPress={onDeleteTask}
                 >
                     <Text style={styles.delete.caption}>Delete</Text>
                 </MaterialIcons.Button>

@@ -1,11 +1,11 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 26 Oct 1985, 4:15:00 AM
- *  Last update: 2 Oct 2024, 12:31:17 PM
+ *  Last update: 2 Oct 2024, 2:15:10 PM
  *  Copyright (c) 1985 - 2024 Kaleb Jubar
  */
 // native/Expo components
-import { StyleSheet, Text, View } from "react-native";
+import { Alert, StyleSheet, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
 // React hooks
@@ -38,12 +38,69 @@ export default function App() {
         },
     ]);
 
+    /**
+     * Get the task with the specified ID.
+     * @param {string} taskId ID of task
+     * @returns a task object, or undefined if no task has the specified ID
+     */
+    const getTask = (taskId) => tasks.find((task) => task.id === taskId);
+
+    /**
+     * Toggle the completed status of a task.
+     * @param {string} taskId ID of task
+     */
+    const toggleTaskStatus = (taskId) => {
+        // make a copy of the task list and pull out this task
+        const newTasks = [...tasks];
+        const task = newTasks.find((task) => task.id === taskId);
+
+        // if we found one, update it and the list in state
+        if (task) {
+            task.status = !task.status;
+            setTasks(newTasks);
+        }
+    };
+
+    /**
+     * Prompt the user to delete the specified task.
+     * @param {string} taskId ID of task
+     */
+    const deleteTask = (taskId) => {
+        /**
+         * Actually delete the task.
+         */
+        const deleteTaskInner = () => {
+            const newTasks = tasks.filter((task) => task.id !== taskId);
+            setTasks(newTasks);
+        };
+
+        Alert.alert(
+            "Delete Task?",
+            "Are you sure you want to delete this task?",
+            [
+                {
+                    text: "Cancel",
+                    style: "cancel",
+                },
+                {
+                    text: "Delete",
+                    onPress: deleteTaskInner,
+                    style: "destructive",
+                },
+            ]
+        );
+    };
+
     return (
         <View style={styles.container}>
             <StatusBar style="light" />
 
             <Header />
-            <TaskList tasks={tasks} />
+            <TaskList
+                tasks={tasks}
+                toggleTask={toggleTaskStatus}
+                deleteTask={deleteTask}
+            />
         </View>
     );
 }
