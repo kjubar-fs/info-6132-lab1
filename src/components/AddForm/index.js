@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 2 Oct 2024, 2:52:50 PM
- *  Last update: 2 Oct 2024, 6:56:55 PM
+ *  Last update: 2 Oct 2024, 7:42:08 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { Modal, View, Text, TextInput, TouchableOpacity } from "react-native";
@@ -12,7 +12,7 @@ import styles from "./styles";
 
 export default function AddForm({ shown, closeModal, addTask }) {
     const [taskTitle, setTaskTitle] = useState("");
-    const [hasValidationError, setHasValidationError] = useState(true);
+    const [hasValidationError, setHasValidationError] = useState(false);
 
     /**
      * Clear the form errors and input and close the form.
