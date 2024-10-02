@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 26 Oct 1985, 4:15:00 AM
- *  Last update: 2 Oct 2024, 2:59:53 PM
+ *  Last update: 2 Oct 2024, 5:59:34 PM
  *  Copyright (c) 1985 - 2024 Kaleb Jubar
  */
 // native/Expo components
@@ -40,13 +40,14 @@ export default function App() {
             status: false,
         },
     ]);
+    const [addShown, setAddShown] = useState(false);
 
     /**
-     * Get the task with the specified ID.
-     * @param {string} taskId ID of task
-     * @returns a task object, or undefined if no task has the specified ID
+     * Toggle whether or not the add form is shown.
      */
-    const getTask = (taskId) => tasks.find((task) => task.id === taskId);
+    const toggleAddFormShown = () => {
+        setAddShown(!addShown);
+    };
 
     /**
      * Toggle the completed status of a task.
@@ -94,6 +95,20 @@ export default function App() {
         );
     };
 
+    /**
+     * Add a new task to the task list.
+     * @param {string} title task title
+     */
+    const addTask = (title) => {
+        const newTask = {
+            id: uuidv4(),
+            title,
+            status: false,
+        };
+        const newTasks = [...tasks, newTask];
+        setTasks(newTasks);
+    };
+
     return (
         <View style={styles.container}>
             <StatusBar style="light" />
@@ -113,11 +128,12 @@ export default function App() {
                         pressed ? styles.addBtn.withoutShadow : styles.addBtn.withShadow,
                     ]
                 )}
+                onPress={toggleAddFormShown}
             >
                 <Text style={styles.addBtn.caption}>+</Text>
             </Pressable>
 
-            <AddForm shown={true} />
+            <AddForm shown={addShown} closeModal={toggleAddFormShown} addTask={addTask} />
         </View>
     );
 }

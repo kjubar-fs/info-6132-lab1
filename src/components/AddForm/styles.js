@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 2 Oct 2024, 2:52:57 PM
- *  Last update: 2 Oct 2024, 3:22:36 PM
+ *  Last update: 2 Oct 2024, 6:46:22 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { StyleSheet } from "react-native";
@@ -51,6 +51,19 @@ export default StyleSheet.create({
             fontSize: 15,
             fontStyle: "italic",
             fontWeight: "500",
+
+            container: {
+                flexDirection: "row",
+                justifyContent: "space-between",
+            },
+
+            error: {
+                color: negativeColor,
+            },
+        },
+
+        error: {
+            borderColor: negativeColor,
         },
     },
 
