@@ -1,10 +1,10 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 2 Oct 2024, 12:01:35 PM
- *  Last update: 2 Oct 2024, 12:11:22 PM
+ *  Last update: 2 Oct 2024, 12:19:22 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
-import { FlatList, ScrollView } from "react-native";
+import { FlatList } from "react-native";
 
 import Task from "./Task";
 
