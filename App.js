@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 26 Oct 1985, 4:15:00 AM
- *  Last update: 2 Oct 2024, 5:59:34 PM
+ *  Last update: 2 Oct 2024, 7:01:26 PM
  *  Copyright (c) 1985 - 2024 Kaleb Jubar
  */
 // native/Expo components
@@ -23,23 +23,7 @@ import AddForm from "./src/components/AddForm";
 import { dropShadowStyle, positiveColor } from "./src/includes/globalStyles";
 
 export default function App() {
-    const [tasks, setTasks] = useState([
-        {
-            id: uuidv4(),   // use UUID library to mimic auto ID generation from database
-            title: "Task 1",
-            status: false,
-        },
-        {
-            id: uuidv4(),
-            title: "Task 2",
-            status: true,
-        },
-        {
-            id: uuidv4(),
-            title: "Task 3",
-            status: false,
-        },
-    ]);
+    const [tasks, setTasks] = useState([]);
     const [addShown, setAddShown] = useState(false);
 
     /**
@@ -101,7 +85,7 @@ export default function App() {
      */
     const addTask = (title) => {
         const newTask = {
-            id: uuidv4(),
+            id: uuidv4(),   // use UUID library to mimic auto ID generation from database
             title,
             status: false,
         };

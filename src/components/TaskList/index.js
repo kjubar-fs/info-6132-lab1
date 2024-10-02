@@ -1,10 +1,10 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 2 Oct 2024, 12:01:35 PM
- *  Last update: 2 Oct 2024, 2:00:43 PM
+ *  Last update: 2 Oct 2024, 7:06:12 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
-import { FlatList } from "react-native";
+import { FlatList, Text } from "react-native";
 
 import Task from "./Task";
 
@@ -26,6 +26,9 @@ export default function TaskList({ tasks, toggleTask, deleteTask }) {
             keyExtractor={(item) => item.id}
             contentContainerStyle={styles.container}
             showsVerticalScrollIndicator={false}
+            ListEmptyComponent={() => 
+                <Text style={styles.emptyText}>Add a task to get started!</Text>
+            }
         />
     );
 }
