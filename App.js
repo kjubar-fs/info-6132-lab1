@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 26 Oct 1985, 4:15:00 AM
- *  Last update: 2 Oct 2024, 2:51:10 PM
+ *  Last update: 2 Oct 2024, 2:59:53 PM
  *  Copyright (c) 1985 - 2024 Kaleb Jubar
  */
 // native/Expo components
@@ -18,8 +18,9 @@ import { v4 as uuidv4 } from "uuid";
 // custom components
 import Header from "./src/components/Header";
 import TaskList from "./src/components/TaskList";
+import AddForm from "./src/components/AddForm";
 
-import { positiveColor } from "./src/includes/globalStyles";
+import { dropShadowStyle, positiveColor } from "./src/includes/globalStyles";
 
 export default function App() {
     const [tasks, setTasks] = useState([
@@ -115,6 +116,8 @@ export default function App() {
             >
                 <Text style={styles.addBtn.caption}>+</Text>
             </Pressable>
+
+            <AddForm shown={true} />
         </View>
     );
 }
@@ -140,14 +143,7 @@ const styles = StyleSheet.create({
         borderRadius: 360,
 
         withShadow: {
-            shadowColor: Platform.OS === "ios" ? "#666" : undefined,
-            shadowOffset: {
-                width: 0,
-                height: 3,
-            },
-            shadowOpacity: 0.5,
-            shadowRadius: 2,
-            elevation: 3,
+            ...dropShadowStyle
         },
 
         withoutShadow: {
