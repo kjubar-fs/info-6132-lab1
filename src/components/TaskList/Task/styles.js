@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 2 Oct 2024, 12:03:11 PM
- *  Last update: 2 Oct 2024, 1:41:27 PM
+ *  Last update: 2 Oct 2024, 1:49:09 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { Platform, StyleSheet } from "react-native";
@@ -26,6 +26,7 @@ export default StyleSheet.create({
     controlsContainer: {
         flexDirection: "row",
         justifyContent: "space-between",
+        alignItems: "center",
     },
 
     switch: {

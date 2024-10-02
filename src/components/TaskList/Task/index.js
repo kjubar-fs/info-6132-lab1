@@ -1,7 +1,7 @@
 /*
  *  Author: Kaleb Jubar
  *  Created: 2 Oct 2024, 12:01:42 PM
- *  Last update: 2 Oct 2024, 1:42:03 PM
+ *  Last update: 2 Oct 2024, 1:48:48 PM
  *  Copyright (c) 2024 Kaleb Jubar
  */
 import { View, Text, Switch } from "react-native";
@@ -33,6 +33,8 @@ export default function Task({ task }) {
                     color="#FFF"
                     backgroundColor={negativeColor}
                     style={styles.delete.button}
+                    activeOpacity={0.5}
+                    underlayColor="#EFEFEF"
                     onPress={() => {}}
                 >
                     <Text style={styles.delete.caption}>Delete</Text>
